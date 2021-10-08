@@ -16,29 +16,26 @@ public class RefLinqBenchmark
         };
 
     [Benchmark]
-    public int ClassicLinq()
+    public double ClassicLinq()
     {
-        var res = 0;
+        var res = 0.0;
         var seq = arr
-            // .Select(c => c.ToString())
-            // .Where(c => c.Length > 1)
-            // .Select(c => int.Parse(c) * 100);
-            .Select(c => c * 100);
+            .Select(c => c + 5)
+            .Where(c => c % 2 == 0)
+            .Select(c => c - 6.0);
         foreach (var a in seq)
             res += a;
         return res;
     }
 
     [Benchmark]
-    public int RefLinq()
+    public double RefLinq()
     {
-        var res = 0;
+        var res = 0.0;
         var seq = arr.It()
-            // .RefSelect<int, string, IReadOnlyListEnumerator<int>>(c => c.ToString())
-            // .RefWhere<string, Select<int, string, IReadOnlyListEnumerator<int>>>(c => c.Length > 1)
-            // .RefSelect<string, int, Where<string, Select<int, string, IReadOnlyListEnumerator<int>>>>(c => int.Parse(c) * 100);
-            // .RefSelect<string, int, Where<string, Select<int, string, IReadOnlyListEnumerator<int>>>>(c => c * 100);
-            .RefSelect<int, int, IReadOnlyListEnumerator<int>>(c => c * 100);
+            .RefSelect<int, int, IReadOnlyListEnumerator<int>>(c => c + 5)
+            .RefWhere<int, Select<int, int, IReadOnlyListEnumerator<int>>>(c => c % 2 == 0)
+            .RefSelect<int, double, Where<int, Select<int, int, IReadOnlyListEnumerator<int>>>>(c => c - 6.0);
         foreach (var a in seq)
             res += a;
         return res;

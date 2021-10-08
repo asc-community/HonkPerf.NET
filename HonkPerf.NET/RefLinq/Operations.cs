@@ -15,12 +15,18 @@ public struct Select<T, U, TEnumerator>
     {
         this.prev = prev;
         this.map = map;
+        Current = default!;
     }
     private TEnumerator prev;
     private readonly Func<T, U> map;
     public bool MoveNext()
-        => prev.MoveNext();
-    public U Current => map(prev.Current);
+    {
+        var res = prev.MoveNext();
+        if (res)
+            Current = map(prev.Current);
+        return res;
+    }
+    public U Current { get; private set;}
 
     public Select<T, U, TEnumerator> GetEnumerator() => this;
 }
