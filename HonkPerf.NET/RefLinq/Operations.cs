@@ -1,4 +1,7 @@
-﻿namespace HonkPerf.NET.RefLinq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
+namespace HonkPerf.NET.RefLinq;
 
 public interface IRefEnumerable<T>
 {
@@ -6,6 +9,25 @@ public interface IRefEnumerable<T>
     T Current { get; }
 }
 
+public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
+{
+    private readonly IReadOnlyList<T> list;
+    private int curr;
+
+    public IReadOnlyListEnumerator(IReadOnlyList<T> list)
+    {
+        this.list = list;
+        this.curr = -1;
+    }
+
+    public bool MoveNext()
+    {
+        curr++;
+        return curr < list.Count;
+    }
+
+    public T Current => list[curr];
+}
 
 public struct Select<T, U, TEnumerator>
     : IRefEnumerable<U>
@@ -56,23 +78,40 @@ public struct Where<T, TEnumerator>
     public Where<T, TEnumerator> GetEnumerator() => this;
 }
 
-
-public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
+public struct Zip<T1, T2, TEnumerator1, TEnumerator2>
+        where TEnumerator1 : IRefEnumerable<T1>
+        where TEnumerator2 : IRefEnumerable<T2>
 {
-    private readonly IReadOnlyList<T> list;
-    private int curr;
+    private TEnumerator1 en1;
+    private TEnumerator2 en2;
 
-    public IReadOnlyListEnumerator(IReadOnlyList<T> list)
+    public Zip(TEnumerator1 en1, TEnumerator2 en2)
     {
-        this.list = list;
-        this.curr = -1;
+        this.en1 = en1;
+        this.en2 = en2;
+        Current = default;
     }
+
+    public (T1, T2) Current { get; private set; }
 
     public bool MoveNext()
     {
-        curr++;
-        return curr < list.Count;
+        var res1 = en1.MoveNext();
+        var res2 = en2.MoveNext();
+        if (!res1 && !res2)
+            return false;
+        if (res1 && res2)
+        {
+            Current = (en1.Current, en2.Current);
+            return true;
+        }
+        ThrowInvalid();
+        return default;
     }
 
-    public T Current => list[curr];
+    [MethodImpl(MethodImplOptions.NoInlining), DoesNotReturn]
+    private static void ThrowInvalid()
+        => throw new InvalidOperationException("Collections should have the same size");
+
+    public Zip<T1, T2, TEnumerator1, TEnumerator2> GetEnumerator() => this;
 }
