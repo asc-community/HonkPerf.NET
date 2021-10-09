@@ -3,7 +3,7 @@ using HonkPerf.NET.RefLinq;
 
 namespace Benchmarks;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser, DisassemblyDiagnoser(maxDepth: 5, exportHtml: true)]
 public class RefLinqBenchmark
 {
     private readonly int[] arr = new[] {
@@ -16,7 +16,7 @@ public class RefLinqBenchmark
         };
 
     [Benchmark]
-    public double ClassicLinq()
+    public double ClassicLinqCombined()
     {
         var res = 0.0;
         var seq = arr
@@ -29,15 +29,16 @@ public class RefLinqBenchmark
     }
 
     [Benchmark]
-    public double RefLinq()
+    public double RefLinqCombined()
     {
         var res = 0.0;
         var seq = arr.It()
-            .RefSelect<int, int, IReadOnlyListEnumerator<int>>(c => c + 5)
-            .RefWhere<int, Select<int, int, IReadOnlyListEnumerator<int>>>(c => c % 2 == 0)
-            .RefSelect<int, double, Where<int, Select<int, int, IReadOnlyListEnumerator<int>>>>(c => c - 6.0);
-        foreach (var a in seq)
-            res += a;
+            .RefSelect((int c) => c + 5)
+            .RefWhere((int c) => c % 2 == 0)
+            .RefSelect((int c) => c - 6.0)
+            .RefZip(arr.It());
+        foreach (var (a, b) in seq)
+            res += a * b;
         return res;
     }
 }

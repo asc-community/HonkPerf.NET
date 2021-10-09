@@ -41,6 +41,8 @@ public struct Select<T, U, TEnumerator>
     }
     private TEnumerator prev;
     private readonly Func<T, U> map;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         var res = prev.MoveNext();
@@ -64,6 +66,8 @@ public struct Where<T, TEnumerator>
     }
     private TEnumerator prev;
     private readonly Func<T, bool> map;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         tryAgain:
@@ -94,6 +98,7 @@ public struct Zip<T1, T2, TEnumerator1, TEnumerator2>
 
     public (T1, T2) Current { get; private set; }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         var res1 = en1.MoveNext();
