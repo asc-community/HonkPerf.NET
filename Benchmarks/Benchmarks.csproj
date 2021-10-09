@@ -9,9 +9,12 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+    <PackageReference Include="Cistern.ValueLinq" Version="0.1.14" />
+    <PackageReference Include="LinqAF" Version="3.0.0" />
     <PackageReference Include="LinqFaster" Version="1.0.0" />
     <PackageReference Include="NetFabric.Hyperlinq" Version="3.0.0-beta48" />
     <PackageReference Include="NoAlloq" Version="0.1.0" />
+    <PackageReference Include="StructLinq" Version="0.27.0" />
   </ItemGroup>
 
   <ItemGroup>
