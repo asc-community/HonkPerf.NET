@@ -1,5 +1,6 @@
 using HonkPerf.NET.RefLinq;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace Tests;
@@ -42,6 +43,22 @@ public class RefLinqTests
             (2342, 234200d),
             (23, 2300d)
             });
+    }
+
+    [Fact]
+    public void TestCapture()
+    {
+        var greaterThan = GetThing();
+        var res = 0;
+        var z = new[] { 1, 2, 3 }.It();
+        foreach (var n in z.RefSelect((a, greaterThan) => a + greaterThan, greaterThan))
+            res += n;
+
+        Assert.Equal(51, res);
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        static int GetThing()
+            => 15;
     }
 
     [Fact]

@@ -40,43 +40,45 @@ public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
     public T Current => list[curr];
 }
 
-public struct Select<T, U, TEnumerator>
+public struct Select<T, U, TDelegate, TEnumerator>
     : IRefEnumerable<U>
+    where TDelegate : IValueDelegate<T, U>
     where TEnumerator : IRefEnumerable<T>
 {
-    public Select(TEnumerator prev, Func<T, U> map)
+    internal Select(TEnumerator prev, TDelegate map)
     {
         this.prev = prev;
         this.map = map;
         Current = default!;
     }
     private TEnumerator prev;
-    private readonly Func<T, U> map;
+    private readonly TDelegate map;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         var res = prev.MoveNext();
         if (res)
-            Current = map(prev.Current);
+            Current = map.Invoke(prev.Current);
         return res;
     }
     public U Current { get; private set;}
 
-    public Select<T, U, TEnumerator> GetEnumerator() => this;
+    public Select<T, U, TDelegate, TEnumerator> GetEnumerator() => this;
 }
 
-public struct Where<T, TEnumerator>
+public struct Where<T, TDelegate, TEnumerator>
     : IRefEnumerable<T>
+    where TDelegate : IValueDelegate<T, bool>
     where TEnumerator : IRefEnumerable<T>
 {
-    public Where(TEnumerator prev, Func<T, bool> map)
+    public Where(TEnumerator prev, TDelegate map)
     {
         this.prev = prev;
         this.map = map;
     }
     private TEnumerator prev;
-    private readonly Func<T, bool> map;
+    private readonly TDelegate map;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
@@ -84,13 +86,13 @@ public struct Where<T, TEnumerator>
         tryAgain:
         if (!prev.MoveNext())
             return false;
-        if (!map(prev.Current))
+        if (!map.Invoke(prev.Current))
             goto tryAgain;
         return true;
     }
     public T Current => prev.Current;
 
-    public Where<T, TEnumerator> GetEnumerator() => this;
+    public Where<T, TDelegate, TEnumerator> GetEnumerator() => this;
 }
 
 public struct Zip<T1, T2, TEnumerator1, TEnumerator2>
