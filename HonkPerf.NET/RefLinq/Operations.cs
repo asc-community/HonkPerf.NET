@@ -49,15 +49,21 @@ public struct ArrayEnumerator<T> : IRefEnumerable<T>
     {
         this.array = array;
         this.curr = -1;
+        Current = default!;
     }
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         curr++;
-        return curr < array.Length;
+        if (curr < array.Length)
+        {
+            Current = array[curr];
+            return true;
+        }
+        return false;
     }
 
-    public T Current => array[curr];
+    public T Current { get; private set; }
 }
 
 public struct Select<T, U, TDelegate, TEnumerator>
