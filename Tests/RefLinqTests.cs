@@ -23,6 +23,28 @@ public class RefLinqTests
     }
 
     [Fact]
+    public void Test2()
+    {
+        var list = new List<(int, double)>();
+        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
+        var w1 = z
+            .RefWhere((int c) => c > 5)
+            .RefSelect((int c) => c * 100.0);
+        var w2 = z
+            .RefWhere((int c) => c > 5);
+        foreach (var (b, a) in w1.RefZip(w2, new TypeArg<double>(), new TypeArg<int>()))
+            list.Add((a, b));
+        Assert.Equal(list, new[] { 
+            (10, 1000d), 
+            (20, 2000d),
+            (30, 3000d),
+            (502, 50200d), 
+            (2342, 234200d),
+            (23, 2300d)
+            });
+    }
+
+    [Fact]
     public void NoMoreCallsThanNeeded()
     {
         var list = new List<int>();

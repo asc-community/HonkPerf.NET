@@ -120,3 +120,5 @@ public struct Zip<T1, T2, TEnumerator1, TEnumerator2>
 
     public Zip<T1, T2, TEnumerator1, TEnumerator2> GetEnumerator() => this;
 }
+
+public struct TypeArg<T> { }
