@@ -9,12 +9,12 @@ public interface IRefEnumerable<T>
     T Current { get; }
 }
 
-public struct RefLinq<T, TEnumerator>
+public struct RefLinqEnumerable<T, TEnumerator>
     where TEnumerator : IRefEnumerable<T>
 {
     internal TEnumerator enumerator;
     
-    public RefLinq(TEnumerator en)
+    public RefLinqEnumerable(TEnumerator en)
         => enumerator = en;
 
     public TEnumerator GetEnumerator() => enumerator;

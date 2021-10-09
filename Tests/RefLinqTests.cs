@@ -11,7 +11,7 @@ public class RefLinqTests
     public void Test1()
     {
         var list = new List<int>();
-        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
+        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.ToRefLinq();
         var seq = z
             .RefSelect(c => c.ToString())
             .RefWhere(c => c.Length > 1)
@@ -27,7 +27,7 @@ public class RefLinqTests
     public void Test2()
     {
         var list = new List<(int, double)>();
-        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
+        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.ToRefLinq();
         var w1 = z
             .RefWhere(c => c > 5)
             .RefSelect(c => c * 100.0);
@@ -50,7 +50,7 @@ public class RefLinqTests
     {
         var greaterThan = GetThing();
         var res = 0;
-        var z = new[] { 1, 2, 3 }.It();
+        var z = new[] { 1, 2, 3 }.ToRefLinq();
         foreach (var n in z.RefSelect((a, greaterThan) => a + greaterThan, greaterThan))
             res += n;
 
@@ -65,7 +65,7 @@ public class RefLinqTests
     public void NoMoreCallsThanNeeded()
     {
         var list = new List<int>();
-        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
+        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.ToRefLinq();
         var calls1 = 0;
         var calls2 = 0;
         var calls3 = 0;

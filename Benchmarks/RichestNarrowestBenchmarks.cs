@@ -1,6 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using HonkPerf.NET.RefLinq;
 using System.Runtime.CompilerServices;
+using NoAlloq;
 
 namespace Benchmarks;
 
@@ -14,7 +15,7 @@ namespace Benchmarks;
  * */
 
 [MemoryDiagnoser, DisassemblyDiagnoser(maxDepth: 5, exportHtml: true)]
-public class RefLinqBenchmark
+public class RNBenchmark
 {
     private readonly int[] arr = new[] {
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,
@@ -52,11 +53,11 @@ public class RefLinqBenchmark
     {
         var res = 0.0;
         var local = GetThing();
-        var seq = arr.It()
+        var seq = arr.ToRefLinq()
             .RefSelect(c => c + 5)
             .RefWhere(c => c % 2 == 0)
             .RefSelect((c, local) => c - 6.0 / local, local)
-            .RefZip(arr.It().RefWhere(c => c % 2 == 1))
+            .RefZip(arr.ToRefLinq().RefWhere(c => c % 2 == 1))
             .RefWhere((p, local) => local > 10, local)
             ;
         foreach (var (a, b) in seq)
