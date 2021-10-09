@@ -2,5 +2,9 @@
 using BenchmarkDotNet.Running;
 using Benchmarks;
 
-Console.WriteLine("Hello, World!");
+var b = new RefLinqBenchmark();
+
+Console.WriteLine($"Output classic: {b.ClassicLinqCombined()}");
+Console.WriteLine($"Output reflinq: {b.RefLinqCombined()}");
+
 BenchmarkRunner.Run<RefLinqBenchmark>();

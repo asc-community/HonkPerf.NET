@@ -17,6 +17,10 @@ public static class LinqExtensions
         where TPrevious : IRefEnumerable<T>
         => new(new(prev.enumerator, new(pred)));
 
+    public static RefLinq<T, Where<T, CapturingValueDelegate<T, TCapture, bool>, TPrevious>> RefWhere<T, TCapture, TPrevious>(this RefLinq<T, TPrevious> prev, Func<T, TCapture, bool> pred, TCapture capture)
+        where TPrevious : IRefEnumerable<T>
+        => new(new(prev.enumerator, new(pred, capture)));
+
     public static RefLinq<(T1, T2), Zip<T1, T2, TEnumerator1, TEnumerator2>> RefZip<T1, T2, TEnumerator1, TEnumerator2>(
         this RefLinq<T1, TEnumerator1> seq1, RefLinq<T2, TEnumerator2> seq2)
         where TEnumerator1 : IRefEnumerable<T1>
