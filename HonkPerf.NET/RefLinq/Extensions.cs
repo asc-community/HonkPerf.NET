@@ -2,26 +2,22 @@
 
 public static class LinqExtensions
 {
-    public static IReadOnlyListEnumerator<T> It<T>(this IReadOnlyList<T> c)
-        => new(c);
+    public static RefLinq<T, IReadOnlyListEnumerator<T>> It<T>(this IReadOnlyList<T> c)
+        => new(new(c));
 
-    public static Select<T, U, TPrevious> RefSelect<T, U, TPrevious>(this TPrevious prev, Func<T, U> map)
+    public static RefLinq<U, Select<T, U, TPrevious>> RefSelect<T, U, TPrevious>(this RefLinq<T, TPrevious> prev, Func<T, U> map)
         where TPrevious : IRefEnumerable<T>
-        => new(prev, map);
+        => new(new(prev.enumerator, map));
 
-    public static Where<T, TPrevious> RefWhere<T, TPrevious>(this TPrevious prev, Func<T, bool> map)
+    public static RefLinq<T, Where<T, TPrevious>> RefWhere<T, TPrevious>(this RefLinq<T, TPrevious> prev, Func<T, bool> pred)
         where TPrevious : IRefEnumerable<T>
-        => new(prev, map);
+        => new(new(prev.enumerator, pred));
 
-    public static Zip<T1, T2, TEnumerator1, TEnumerator2> RefZip<T1, T2, TEnumerator1, TEnumerator2>(
-        this TEnumerator1 seq1,
-        TEnumerator2 seq2,
-        TypeArg<T1> _,
-        TypeArg<T2> __
-        )
+    public static RefLinq<(T1, T2), Zip<T1, T2, TEnumerator1, TEnumerator2>> RefZip<T1, T2, TEnumerator1, TEnumerator2>(
+        this RefLinq<T1, TEnumerator1> seq1, RefLinq<T2, TEnumerator2> seq2)
         where TEnumerator1 : IRefEnumerable<T1>
         where TEnumerator2 : IRefEnumerable<T2>
-        => new(seq1, seq2);
+        => new(new(seq1.enumerator, seq2.enumerator));
 
     
 }

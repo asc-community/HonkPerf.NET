@@ -9,6 +9,17 @@ public interface IRefEnumerable<T>
     T Current { get; }
 }
 
+public struct RefLinq<T, TEnumerator>
+    where TEnumerator : IRefEnumerable<T>
+{
+    internal TEnumerator enumerator;
+    
+    public RefLinq(TEnumerator en)
+        => enumerator = en;
+
+    public TEnumerator GetEnumerator() => enumerator;
+}
+
 public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
 {
     private readonly IReadOnlyList<T> list;
@@ -83,8 +94,9 @@ public struct Where<T, TEnumerator>
 }
 
 public struct Zip<T1, T2, TEnumerator1, TEnumerator2>
-        where TEnumerator1 : IRefEnumerable<T1>
-        where TEnumerator2 : IRefEnumerable<T2>
+    : IRefEnumerable<(T1, T2)>
+    where TEnumerator1 : IRefEnumerable<T1>
+    where TEnumerator2 : IRefEnumerable<T2>
 {
     private TEnumerator1 en1;
     private TEnumerator2 en2;

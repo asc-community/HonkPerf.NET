@@ -12,9 +12,9 @@ public class RefLinqTests
         var list = new List<int>();
         var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
         var seq = z
-            .RefSelect<int, string, IReadOnlyListEnumerator<int>>(c => c.ToString())
-            .RefWhere<string, Select<int, string, IReadOnlyListEnumerator<int>>>(c => c.Length > 1)
-            .RefSelect<string, int, Where<string, Select<int, string, IReadOnlyListEnumerator<int>>>>(c => int.Parse(c) * 100);
+            .RefSelect(c => c.ToString())
+            .RefWhere(c => c.Length > 1)
+            .RefSelect(c => int.Parse(c) * 100);
 
         foreach (var a in seq)
             list.Add(a);
@@ -28,11 +28,11 @@ public class RefLinqTests
         var list = new List<(int, double)>();
         var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.It();
         var w1 = z
-            .RefWhere((int c) => c > 5)
-            .RefSelect((int c) => c * 100.0);
+            .RefWhere(c => c > 5)
+            .RefSelect(c => c * 100.0);
         var w2 = z
-            .RefWhere((int c) => c > 5);
-        foreach (var (b, a) in w1.RefZip(w2, new TypeArg<double>(), new TypeArg<int>()))
+            .RefWhere(c => c > 5);
+        foreach (var (b, a) in w1.RefZip(w2))
             list.Add((a, b));
         Assert.Equal(list, new[] { 
             (10, 1000d), 
@@ -54,25 +54,24 @@ public class RefLinqTests
         var calls3 = 0;
         var log = new List<string>();
         var seq = z
-            .RefSelect<int, string, IReadOnlyListEnumerator<int>>(c => 
+            .RefSelect(c => 
                 {
                     calls1++;
                     log.Add(c.ToString());
                     return c.ToString();
                 })
-            .RefWhere<string, Select<int, string, IReadOnlyListEnumerator<int>>>(c => 
+            .RefWhere(c => 
                 {
                     calls2++;
                     return c.Length > 1;
                 })
-            .RefSelect<string, int, Where<string, Select<int, string, IReadOnlyListEnumerator<int>>>>(c =>
+            .RefSelect(c =>
                 {
                     calls3++;
                     return int.Parse(c) * 100;
                 });
 
         foreach (var a in seq)
-            // list.Add(int.Parse(a));
             list.Add(a);
 
         Assert.Equal(9, calls1);

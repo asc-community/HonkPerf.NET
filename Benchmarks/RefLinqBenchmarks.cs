@@ -44,13 +44,12 @@ public class RefLinqBenchmark
     {
         var res = 0.0;
         var seq = arr.It()
-            .RefSelect((int c) => c + 5)
-            .RefWhere((int c) => c % 2 == 0)
-            .RefSelect((int c) => c - 6.0)
+            .RefSelect(c => c + 5)
+            .RefWhere(c => c % 2 == 0)
+            .RefSelect(c => c - 6.0)
             .RefZip(
                 arr.It()
-                .RefWhere((int c) => c % 2 == 1), 
-                new TypeArg<double>(), new TypeArg<int>())
+                .RefWhere(c => c % 2 == 1))
             ;
         foreach (var (a, b) in seq)
             res += a * b;
