@@ -8,19 +8,16 @@ using StructLinq;
 
 /*
  
-|              Method |       Mean |    Error |   StdDev | Code Size |  Gen 0 | Allocated |
-|-------------------- |-----------:|---------:|---------:|----------:|-------:|----------:|
-| ClassicLinqCombined | 1,272.3 ns | 25.41 ns | 48.96 ns |   2,112 B | 0.0801 |     256 B |
-|     RefLinqCombined | 1,303.9 ns | 25.56 ns | 32.33 ns |   1,245 B |      - |         - |
-|     NoAlloqCombined | 1,362.8 ns | 26.61 ns | 54.96 ns |   2,114 B | 0.0267 |      88 B |
-|  LinqFasterCombined |   774.4 ns | 15.48 ns | 25.86 ns |   1,971 B | 0.4253 |   1,336 B |
-|   HyperlinqCombined |   702.6 ns | 10.77 ns | 16.45 ns |   1,506 B | 0.0277 |      88 B |
-|   ValueLinqCombined |   770.8 ns | 15.32 ns | 14.33 ns |   1,364 B | 0.0172 |      56 B |
-|      LinqAFCombined |   771.9 ns | 15.10 ns | 14.13 ns |   1,807 B | 0.0277 |      88 B |
-|  StructLinqCombined |   768.8 ns | 10.16 ns |  9.01 ns |     933 B | 0.0582 |     184 B |
-
-
- 
+|              Method |       Mean |    Error |   StdDev |     Median | Code Size |  Gen 0 | Allocated |
+|-------------------- |-----------:|---------:|---------:|-----------:|----------:|-------:|----------:|
+| ClassicLinqCombined | 1,313.2 ns | 26.24 ns | 75.71 ns | 1,288.9 ns |   2,112 B | 0.0801 |     256 B |
+|     RefLinqCombined |   869.1 ns | 16.86 ns | 26.25 ns |   866.2 ns |   1,218 B |      - |         - |
+|     NoAlloqCombined | 1,325.8 ns | 25.89 ns | 41.07 ns | 1,318.3 ns |   2,114 B | 0.0267 |      88 B |
+|  LinqFasterCombined |   777.9 ns | 15.56 ns | 30.71 ns |   774.2 ns |   1,971 B | 0.4253 |   1,336 B |
+|   HyperlinqCombined |   706.8 ns | 13.79 ns | 18.40 ns |   704.9 ns |   1,506 B | 0.0277 |      88 B |
+|   ValueLinqCombined |   749.1 ns | 12.20 ns | 10.19 ns |   750.1 ns |   1,364 B | 0.0172 |      56 B |
+|      LinqAFCombined |   680.0 ns | 13.58 ns | 30.92 ns |   673.0 ns |   1,807 B | 0.0277 |      88 B |
+|  StructLinqCombined |   733.0 ns | 13.22 ns | 12.36 ns |   730.2 ns |     933 B | 0.0582 |     184 B |
  
  */
 

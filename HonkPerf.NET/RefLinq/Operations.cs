@@ -30,7 +30,7 @@ public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
         this.list = list;
         this.curr = -1;
     }
-
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
     {
         curr++;
@@ -38,6 +38,26 @@ public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
     }
 
     public T Current => list[curr];
+}
+
+public struct IArrayEnumerator<T> : IRefEnumerable<T>
+{
+    private readonly T[] array;
+    private int curr;
+
+    public IArrayEnumerator(T[] array)
+    {
+        this.array = array;
+        this.curr = -1;
+    }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public bool MoveNext()
+    {
+        curr++;
+        return curr < array.Length;
+    }
+
+    public T Current => array[curr];
 }
 
 public struct Select<T, U, TDelegate, TEnumerator>

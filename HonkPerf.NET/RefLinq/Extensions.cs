@@ -4,6 +4,8 @@ public static class LinqExtensions
 {
     public static RefLinqEnumerable<T, IReadOnlyListEnumerator<T>> ToRefLinq<T>(this IReadOnlyList<T> c)
         => new(new(c));
+    public static RefLinqEnumerable<T, IArrayEnumerator<T>> ToRefLinq<T>(this T[] c)
+        => new(new(c));
 
     public static RefLinqEnumerable<U, Select<T, U, PureValueDelegate<T, U>, TPrevious>> RefSelect<T, U, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, Func<T, U> map)
         where TPrevious : IRefEnumerable<T>
