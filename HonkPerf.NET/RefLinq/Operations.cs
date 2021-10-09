@@ -40,12 +40,12 @@ public struct IReadOnlyListEnumerator<T> : IRefEnumerable<T>
     public T Current => list[curr];
 }
 
-public struct IArrayEnumerator<T> : IRefEnumerable<T>
+public struct ArrayEnumerator<T> : IRefEnumerable<T>
 {
     private readonly T[] array;
     private int curr;
 
-    public IArrayEnumerator(T[] array)
+    public ArrayEnumerator(T[] array)
     {
         this.array = array;
         this.curr = -1;
