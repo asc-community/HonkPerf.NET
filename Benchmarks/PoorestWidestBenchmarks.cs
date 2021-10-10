@@ -84,8 +84,8 @@ public class PWBenchmark
             .Select(c => c - 6.0 / local)
             ;
         Span<double> dst = stackalloc double[100];
-        seq.CopyInto(dst);
-        foreach (var a in dst)
+        var copied = seq.CopyInto(dst);
+        foreach (var a in copied)
             res += a;
         return res;
     }

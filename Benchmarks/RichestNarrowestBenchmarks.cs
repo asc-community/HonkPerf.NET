@@ -32,7 +32,7 @@ public class RNBenchmark
         => 15;
 
     [Benchmark]
-    public double ClassicLinqCombined()
+    public double ClassicLinqSum()
     {
         var res = 0.0;
         var local = GetThing();
@@ -42,14 +42,13 @@ public class RNBenchmark
             .Select(c => c - 6.0 / local)
             .Zip(arr.Where(c => c % 2 == 1))
             .Where(p => local > 10)
+            .Select(p => p.Item1 * p.Item2)
             ;
-        foreach (var (a, b) in seq)
-            res += a * b;
-        return res;
+        return seq.Sum();
     }
 
     [Benchmark]
-    public double RefLinqCombined()
+    public double RefLinqSum()
     {
         var res = 0.0;
         var local = GetThing();
@@ -59,9 +58,30 @@ public class RNBenchmark
             .RefSelect((c, local) => c - 6.0 / local, local)
             .RefZip(arr.ToRefLinq().RefWhere(c => c % 2 == 1))
             .RefWhere((p, local) => local > 10, local)
+            .RefSelect(p => p.Item1 * p.Item2)
             ;
-        foreach (var (a, b) in seq)
-            res += a * b;
-        return res;
+        return seq.Sum();
+    }
+
+    private struct AddInts : IValueDelegate<double, double, double>
+    {
+        public double Invoke(double a, double b)
+            => a + b;
+    }
+
+    [Benchmark]
+    public double RefLinqAgg()
+    {
+        var res = 0.0;
+        var local = GetThing();
+        var seq = arr.ToRefLinq()
+            .RefSelect(c => c + 5)
+            .RefWhere(c => c % 2 == 0)
+            .RefSelect((c, local) => c - 6.0 / local, local)
+            .RefZip(arr.ToRefLinq().RefWhere(c => c % 2 == 1))
+            .RefWhere((p, local) => local > 10, local)
+            .RefSelect(p => p.Item1 * p.Item2)
+            ;
+        return seq.Aggregate(0.0, new AddInts());
     }
 }
