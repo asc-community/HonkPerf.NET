@@ -3,6 +3,7 @@
 public interface IRefEnumerable<T>
 {
     bool MoveNext();
+
     T Current { get; }
 }
 

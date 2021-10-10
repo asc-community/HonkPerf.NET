@@ -8,7 +8,7 @@ public class WhereTest
         var seq =
             new[] { 1, 2, 3 }
             .ToRefLinq()
-            .RefWhere(c => c >= 1);
+            .RefWhere(c => c > 1);
         TestUtils.EqualSequences(seq, new[] { 2, 3 });
     }
 
