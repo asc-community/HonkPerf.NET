@@ -11,4 +11,12 @@ public static partial class ActiveLinqExtensions
                 return false;
         return true;
     }
+
+    public static bool All<T, TEnumerator>(this RefLinqEnumerable<T, TEnumerator> seq, Func<T, bool> pred)
+        where TEnumerator : IRefEnumerable<T>
+        => seq.All(new PureValueDelegate<T, bool>(pred));
+
+    public static bool All<T, TCapture, TEnumerator>(this RefLinqEnumerable<T, TEnumerator> seq, Func<T, TCapture, bool> pred, TCapture capture)
+        where TEnumerator : IRefEnumerable<T>
+        => seq.All(new CapturingValueDelegate<T, TCapture, bool>(pred, capture));
 }

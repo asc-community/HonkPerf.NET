@@ -10,7 +10,7 @@ static partial class LazyLinqExtensions
         where TPrevious : IRefEnumerable<T>
         => new(new(prev.enumerator, new(pred, capture)));
 
-    public static RefLinqEnumerable<T, Where<T, TDelegate, TPrevious>> RefWhere<T, TCapture, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate pred)
+    public static RefLinqEnumerable<T, Where<T, TDelegate, TPrevious>> RefWhere<T, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate pred)
         where TPrevious : IRefEnumerable<T>
         where TDelegate : IValueDelegate<T, bool>
         => new(new(prev.enumerator, pred));
