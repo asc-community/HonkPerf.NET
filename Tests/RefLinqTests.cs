@@ -10,32 +10,27 @@ public class RefLinqTests
     [Fact]
     public void Test1()
     {
-        var list = new List<int>();
-        var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.ToRefLinq();
-        var seq = z
+        var seq =
+            new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }
+            .ToRefLinq()
             .RefSelect(c => c.ToString())
             .RefWhere(c => c.Length > 1)
             .RefSelect(c => int.Parse(c) * 100);
 
-        foreach (var a in seq)
-            list.Add(a);
-
-        Assert.Equal(list, new [] { 1000, 2000, 3000, 50200, 234200, 2300 });
+        TestUtils.EqualSequences(seq, new[] { 1000, 2000, 3000, 50200, 234200, 2300 });
     }
 
     [Fact]
     public void Test2()
     {
-        var list = new List<(int, double)>();
         var z = new[] { 1, 2, 3, 10, 20, 30, 502, 2342, 23 }.ToRefLinq();
         var w1 = z
             .RefWhere(c => c > 5)
             .RefSelect(c => c * 100.0);
         var w2 = z
             .RefWhere(c => c > 5);
-        foreach (var (b, a) in w1.RefZip(w2))
-            list.Add((a, b));
-        Assert.Equal(list, new[] { 
+        var seq = w2.RefZip(w1);
+        TestUtils.EqualSequences(seq, new[] { 
             (10, 1000d), 
             (20, 2000d),
             (30, 3000d),
