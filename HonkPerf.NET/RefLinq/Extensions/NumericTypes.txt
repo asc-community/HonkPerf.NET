@@ -1,5 +1,0 @@
-﻿<#
-
-    var types = new [] { "int", "uint", "long", "ulong", "float", "double", "decimal" };
-
-#>
