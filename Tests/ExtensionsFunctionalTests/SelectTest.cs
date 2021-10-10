@@ -1,7 +1,4 @@
-﻿using HonkPerf.NET.RefLinq;
-using Xunit;
-
-namespace Tests;
+﻿namespace Tests.ExtensionsFunctionalTests;
 
 public class SelectTest
 {

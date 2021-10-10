@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿global using HonkPerf.NET.Core;
+
 using BenchmarkDotNet.Running;
 using Benchmarks;
 

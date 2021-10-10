@@ -1,6 +1,9 @@
-﻿using HonkPerf.NET.RefLinq.Enumerators;
+﻿global using HonkPerf.NET.RefLinq;
+global using Xunit;
+global using HonkPerf.NET.Core;
+
+using HonkPerf.NET.RefLinq.Enumerators;
 using System.Collections.Generic;
-using Xunit;
 
 namespace Tests;
 

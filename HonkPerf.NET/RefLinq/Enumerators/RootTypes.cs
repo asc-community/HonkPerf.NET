@@ -1,9 +1,4 @@
-﻿global using HonkPerf.NET.RefLinq.Enumerators;
-global using System.Runtime.CompilerServices;
-
-using System.Diagnostics.CodeAnalysis;
-
-namespace HonkPerf.NET.RefLinq.Enumerators;
+﻿namespace HonkPerf.NET.RefLinq.Enumerators;
 
 public interface IRefEnumerable<T>
 {
