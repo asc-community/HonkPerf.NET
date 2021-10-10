@@ -4,6 +4,62 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="RefLinq\Extensions\Min.tt">
+      <LastGenOutput>Min.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="RefLinq\Extensions\NumericTypes.txt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NumericTypes.cs</LastGenOutput>
+    </None>
+    <None Update="RefLinq\Extensions\Multiply.tt">
+      <LastGenOutput>Multiply.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="RefLinq\Extensions\Max.tt">
+      <LastGenOutput>Max.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="RefLinq\Extensions\Sum.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Sum.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="RefLinq\Extensions\Min.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Min.tt</DependentUpon>
+    </Compile>
+    <Compile Update="RefLinq\Extensions\NumericTypes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NumericTypes.txt</DependentUpon>
+    </Compile>
+    <Compile Update="RefLinq\Extensions\Multiply.cs">
+      <DependentUpon>Multiply.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="RefLinq\Extensions\Max.cs">
+      <DependentUpon>Max.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="RefLinq\Extensions\Sum.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Sum.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
 
 </Project>

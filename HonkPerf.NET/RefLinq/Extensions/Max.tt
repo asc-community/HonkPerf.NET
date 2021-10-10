@@ -1,0 +1,21 @@
+﻿<#@ include file="NumericTypes.txt" #>
+
+namespace HonkPerf.NET.RefLinq;
+
+public static partial class ActiveLinqExtensions
+{
+<#
+        foreach (var type in types) {
+#>
+    public static <#= type #> Max<TEnumerator>(this RefLinqEnumerable<<#= type #>, TEnumerator> seq)
+        where TEnumerator : IRefEnumerable<<#= type #>>
+    {
+        <#= type #> c = <#= type #>.MinValue;
+        foreach (var e in seq)
+            c = Math.Max(c, e);
+        return c;
+    }
+<#
+        }
+#>
+}
