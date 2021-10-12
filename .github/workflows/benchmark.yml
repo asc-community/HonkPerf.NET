@@ -1,0 +1,40 @@
+name: Benchmark
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  benchmark:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+        
+    - name: Benchmark SelectWhereBenchmark
+      run: |
+        cd Benchmarks
+        dotnet run -c release SelectWhereBenchmark
+
+    - name: Benchmark SelectWhereZipSumBenchmarks
+      run: |
+        cd Benchmarks
+        dotnet run -c release SelectWhereZipSumBenchmarks
+        
+    - name: Benchmark SelectWhereAppendPrependConcatSumMaxBenchmarks
+      run: |
+        cd Benchmarks
+        dotnet run -c release SelectWhereAppendPrependConcatSumMaxBenchmarks
+        
+    - name: Benchmark AppendPrependBenchmark
+      run: |
+        cd Benchmarks
+        dotnet run -c release AppendPrependBenchmark
