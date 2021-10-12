@@ -11,5 +11,5 @@ public static partial class ActiveLinqExtensions
     public static T Min<T, TEnumerator>(this RefLinqEnumerable<T, TEnumerator> seq)
         where TEnumerator : IRefEnumerable<T>
         where T : unmanaged
-        => seq.Aggregate(Scalar<T>.MaxValue, new MinDelegate<T>());
+        => seq.Aggregate(new MinDelegate<T>());
 }
