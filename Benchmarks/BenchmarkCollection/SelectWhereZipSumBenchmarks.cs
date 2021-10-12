@@ -33,21 +33,6 @@ public class SelectWhereZipSumBenchmarks
         => 15;
 
     [Benchmark]
-    public double ClassicLinqSum()
-    {
-        var local = GetThing();
-        var seq = arr
-            .Select(c => c + 5)
-            .Where(c => c % 2 == 0)
-            .Select(c => c - 6.0 / local)
-            .Zip(arr.Where(c => c % 2 == 1))
-            .Where(p => local > 10)
-            .Select(p => p.Item1 * p.Item2)
-            ;
-        return seq.Sum();
-    }
-
-    [Benchmark]
     public double RefLinqSum()
     {
         var res = 0.0;
@@ -83,5 +68,20 @@ public class SelectWhereZipSumBenchmarks
             .Select(p => p.Item1 * p.Item2)
             ;
         return seq.Aggregate(0.0, new AddInts());
+    }
+
+    [Benchmark]
+    public double ClassicLinqSum()
+    {
+        var local = GetThing();
+        var seq = arr
+            .Select(c => c + 5)
+            .Where(c => c % 2 == 0)
+            .Select(c => c - 6.0 / local)
+            .Zip(arr.Where(c => c % 2 == 1))
+            .Where(p => local > 10)
+            .Select(p => p.Item1 * p.Item2)
+            ;
+        return seq.Sum();
     }
 }
