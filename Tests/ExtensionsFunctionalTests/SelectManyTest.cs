@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Tests.ExtensionsFunctionalTests;
+﻿namespace Tests.ExtensionsFunctionalTests;
 
 public class SelectManyTest
 {
@@ -10,7 +8,7 @@ public class SelectManyTest
         var a = 
             new [] { 1d, 2d, 3d }
             .ToRefLinq()
-            .Select(c => Enumerable.Range(1, (int)c).ToArray().ToRefLinq())
+            .Select(c => Enumerable.Range(1, (int)c))
             .SelectMany();
         TestUtils.EqualSequences(a, new [] { 1, 1, 2, 1, 2, 3 });
     }
@@ -21,7 +19,7 @@ public class SelectManyTest
         var a =
             new[] { 1d, 2d, 3d }
             .ToRefLinq()
-            .SelectMany(c => Enumerable.Range(1, (int)c).ToArray().ToRefLinq());
+            .SelectMany(c => Enumerable.Range(1, (int)c));
         TestUtils.EqualSequences(a, new[] { 1, 1, 2, 1, 2, 3 });
     }
 
@@ -32,7 +30,7 @@ public class SelectManyTest
         var a =
             new[] { 1d, 2d, 3d }
             .ToRefLinq()
-            .SelectMany((c, local) => Enumerable.Range(1, (int)c + local).ToArray().ToRefLinq(), local);
+            .SelectMany((c, local) => Enumerable.Range(1, (int)c + local), local);
         TestUtils.EqualSequences(a, new[] { 1, 2, 1, 2, 3, 1, 2, 3, 4 });
     }
 
