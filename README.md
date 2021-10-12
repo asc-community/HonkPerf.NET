@@ -38,7 +38,6 @@ In the example above, no heap allocation happens aside from the one to allocate 
 
 That's yet another linq library. Why use it? Here's a few benchmarks.
 
-
 #### Select & Where
 ```
 |              Method |       Mean |    Error |   StdDev |     Median | Code Size |  Gen 0 | Allocated |
