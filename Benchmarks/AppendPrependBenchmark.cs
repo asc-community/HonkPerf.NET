@@ -28,7 +28,7 @@ public class AppendBench
     public int LinqBench()
     {
         var seq =
-            new int[0]
+            Enumerable.Empty<int>()
             .Append(2)
             .Append(5)
             .Append(10)
