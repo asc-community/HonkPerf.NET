@@ -14,11 +14,19 @@ using Benchmarks;
 // Console.WriteLine($"o7: {b.LinqAFCombined()}");
 // Console.WriteLine($"o8: {b.StructLinqCombined()}");
 
-var b = new RNBenchmark();
-Console.WriteLine($"o1: {b.ClassicLinqSum()}");
-Console.WriteLine($"o2: {b.RefLinqSum()}");
-Console.WriteLine($"o3: {b.RefLinqAgg()}");
+// var b = new RNBenchmark();
+// Console.WriteLine($"o1: {b.ClassicLinqSum()}");
+// Console.WriteLine($"o2: {b.RefLinqSum()}");
+// Console.WriteLine($"o3: {b.RefLinqAgg()}");
 
-BenchmarkRunner.Run<RNBenchmark>();
+var b = new PWBenchmark2();
+Console.WriteLine($"o1: {b.ClassicLinqCombined()}");
+Console.WriteLine($"o2: {b.RefLinqCombined()}");
+Console.WriteLine($"o3: {b.HyperlinqCombined()}");
+Console.WriteLine($"o4: {b.ValueLinqCombined()}");
+Console.WriteLine($"o5: {b.LinqAFCombined()}");
+
+
+BenchmarkRunner.Run<PWBenchmark2>();
 
 // Console.WriteLine(StackAllocBenchmark.Count(() => new PWBenchmark().RefLinqCombined()));
