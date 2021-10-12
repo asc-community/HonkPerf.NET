@@ -1,5 +1,10 @@
+
+using BenchmarkDotNet.Attributes;
+using HonkPerf.NET.RefLinq;
+
 namespace Benchmarks;
 
+[MemoryDiagnoser]
 public class AppendBench
 {
     [Benchmark]
