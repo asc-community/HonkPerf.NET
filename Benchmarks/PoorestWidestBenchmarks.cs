@@ -46,9 +46,9 @@ public class PWBenchmark
         var local = GetThing();
         var seq = arr
             .ToRefLinq()
-            .RefSelect(c => c + 5)
-            .RefWhere(c => c % 2 == 0)
-            .RefSelect((c, local) => c - 6.0 / local, local)
+            .Select(c => c + 5)
+            .Where(c => c % 2 == 0)
+            .Select((c, local) => c - 6.0 / local, local)
             ;
         foreach (var a in seq)
             res += a;

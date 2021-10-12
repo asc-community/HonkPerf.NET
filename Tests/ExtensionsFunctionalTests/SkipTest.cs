@@ -8,7 +8,7 @@ public class SkipTest
         var seq =
             new [] { 1, 2, 3, 4 }
             .ToRefLinq()
-            .RefSkip(2);
+            .Skip(2);
         TestUtils.EqualSequences(seq, new [] { 3, 4 });
     }
 
@@ -18,7 +18,7 @@ public class SkipTest
         var seq =
             new[] { 1, 2, 3, 4 }
             .ToRefLinq()
-            .RefSkip(0);
+            .Skip(0);
         TestUtils.EqualSequences(seq, new[] { 1, 2, 3, 4 });
     }
 
@@ -28,7 +28,7 @@ public class SkipTest
         var seq =
             new[] { 1, 2, 3, 4 }
             .ToRefLinq()
-            .RefSkip(4);
+            .Skip(4);
         TestUtils.EqualSequences(seq, new int[] { });
     }
 
@@ -38,7 +38,7 @@ public class SkipTest
         var seq =
             new[] { 1, 2, 3, 4 }
             .ToRefLinq()
-            .RefSkip(6);
+            .Skip(6);
         TestUtils.EqualSequences(seq, new int[] { });
     }
 }

@@ -2,15 +2,15 @@
 
 static partial class LazyLinqExtensions
 {
-    public static RefLinqEnumerable<T, Where<T, PureValueDelegate<T, bool>, TPrevious>> RefWhere<T, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, Func<T, bool> pred)
+    public static RefLinqEnumerable<T, Where<T, PureValueDelegate<T, bool>, TPrevious>> Where<T, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, Func<T, bool> pred)
         where TPrevious : IRefEnumerable<T>
         => new(new(prev.enumerator, new(pred)));
 
-    public static RefLinqEnumerable<T, Where<T, CapturingValueDelegate<T, TCapture, bool>, TPrevious>> RefWhere<T, TCapture, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, Func<T, TCapture, bool> pred, TCapture capture)
+    public static RefLinqEnumerable<T, Where<T, CapturingValueDelegate<T, TCapture, bool>, TPrevious>> Where<T, TCapture, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, Func<T, TCapture, bool> pred, TCapture capture)
         where TPrevious : IRefEnumerable<T>
         => new(new(prev.enumerator, new(pred, capture)));
 
-    public static RefLinqEnumerable<T, Where<T, TDelegate, TPrevious>> RefWhere<T, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate pred)
+    public static RefLinqEnumerable<T, Where<T, TDelegate, TPrevious>> Where<T, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate pred)
         where TPrevious : IRefEnumerable<T>
         where TDelegate : IValueDelegate<T, bool>
         => new(new(prev.enumerator, pred));

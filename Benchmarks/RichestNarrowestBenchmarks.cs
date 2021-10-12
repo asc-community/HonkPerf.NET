@@ -53,12 +53,12 @@ public class RNBenchmark
         var res = 0.0;
         var local = GetThing();
         var seq = arr.ToRefLinq()
-            .RefSelect(c => c + 5)
-            .RefWhere(c => c % 2 == 0)
-            .RefSelect((c, local) => c - 6.0 / local, local)
-            .RefZip(arr.ToRefLinq().RefWhere(c => c % 2 == 1))
-            .RefWhere((p, local) => local > 10, local)
-            .RefSelect(p => p.Item1 * p.Item2)
+            .Select(c => c + 5)
+            .Where(c => c % 2 == 0)
+            .Select((c, local) => c - 6.0 / local, local)
+            .Zip(arr.ToRefLinq().Where(c => c % 2 == 1))
+            .Where((p, local) => local > 10, local)
+            .Select(p => p.Item1 * p.Item2)
             ;
         return seq.Sum();
     }
@@ -75,12 +75,12 @@ public class RNBenchmark
         var res = 0.0;
         var local = GetThing();
         var seq = arr.ToRefLinq()
-            .RefSelect(c => c + 5)
-            .RefWhere(c => c % 2 == 0)
-            .RefSelect((c, local) => c - 6.0 / local, local)
-            .RefZip(arr.ToRefLinq().RefWhere(c => c % 2 == 1))
-            .RefWhere((p, local) => local > 10, local)
-            .RefSelect(p => p.Item1 * p.Item2)
+            .Select(c => c + 5)
+            .Where(c => c % 2 == 0)
+            .Select((c, local) => c - 6.0 / local, local)
+            .Zip(arr.ToRefLinq().Where(c => c % 2 == 1))
+            .Where((p, local) => local > 10, local)
+            .Select(p => p.Item1 * p.Item2)
             ;
         return seq.Aggregate(0.0, new AddInts());
     }

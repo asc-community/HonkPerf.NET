@@ -10,12 +10,12 @@ unsafe
     var fixedSpan = new FixedReadOnlySpan<int>(z, 9);
     var seq = fixedSpan
         .ToRefLinq()
-        .RefSelect(c => c % 10)
-        .RefWhere(c => c > 0)
-        .RefZip(
+        .Select(c => c % 10)
+        .Where(c => c > 0)
+        .Zip(
             new FixedReadOnlySpan<int>(anotherSeq, 6)
             .ToRefLinq())
-        .RefSelect(p => p.Item1 + p.Item2);
+        .Select(p => p.Item1 + p.Item2);
 
     foreach (var a in seq)
         Console.WriteLine(a);

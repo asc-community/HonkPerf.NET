@@ -12,18 +12,18 @@ public static partial class ActiveLinqExtensions
         where TEnumerator : IRefEnumerable<T>
         where TDelegate : IValueDelegate<T, bool>
     {
-        return seq.RefWhere(pred).enumerator.MoveNext();
+        return seq.Where(pred).enumerator.MoveNext();
     }
 
     public static bool Any<T, TEnumerator>(this RefLinqEnumerable<T, TEnumerator> seq, Func<T, bool> pred)
         where TEnumerator : IRefEnumerable<T>
     {
-        return seq.RefWhere(pred).enumerator.MoveNext();
+        return seq.Where(pred).enumerator.MoveNext();
     }
 
     public static bool Any<T, TCapture, TEnumerator>(this RefLinqEnumerable<T, TEnumerator> seq, Func<T, TCapture, bool> pred, TCapture capture)
         where TEnumerator : IRefEnumerable<T>
     {
-        return seq.RefWhere(pred, capture).enumerator.MoveNext();
+        return seq.Where(pred, capture).enumerator.MoveNext();
     }
 }

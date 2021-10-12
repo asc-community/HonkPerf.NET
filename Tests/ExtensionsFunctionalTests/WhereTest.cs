@@ -8,7 +8,7 @@ public class WhereTest
         var seq =
             new[] { 1, 2, 3 }
             .ToRefLinq()
-            .RefWhere(c => c > 1);
+            .Where(c => c > 1);
         TestUtils.EqualSequences(seq, new[] { 2, 3 });
     }
 
@@ -18,7 +18,7 @@ public class WhereTest
         var seq =
             new[] { 1, 2, 3, 4, 5, 6 }
             .ToRefLinq()
-            .RefWhere(c => c % 3 == 0);
+            .Where(c => c % 3 == 0);
         TestUtils.EqualSequences(seq, new[] { 3, 6 });
     }
 
@@ -28,7 +28,7 @@ public class WhereTest
         var seq =
             new[] { 1, 2, 3, 4, 5, 6 }
             .ToRefLinq()
-            .RefWhere(c => true);
+            .Where(c => true);
         TestUtils.EqualSequences(seq, new[] { 1, 2, 3, 4, 5, 6 });
     }
 
@@ -39,7 +39,7 @@ public class WhereTest
         var seq =
             new[] { 1, 2, 3, 4, 5, 6 }
             .ToRefLinq()
-            .RefWhere((c, local) => c + local > 8, local);
+            .Where((c, local) => c + local > 8, local);
         TestUtils.EqualSequences(seq, new[] { 3, 4, 5, 6 });
     }
 }
