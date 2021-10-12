@@ -14,10 +14,10 @@ using Benchmarks;
 // Console.WriteLine($"o7: {b.LinqAFCombined()}");
 // Console.WriteLine($"o8: {b.StructLinqCombined()}");
 
-// var b = new RNBenchmark();
-// Console.WriteLine($"o1: {b.ClassicLinqSum()}");
-// Console.WriteLine($"o2: {b.RefLinqSum()}");
-// Console.WriteLine($"o3: {b.RefLinqAgg()}");
+var b = new SelectWhereZipSumBenchmarks();
+Console.WriteLine($"o1: {b.ClassicLinqSum()}");
+Console.WriteLine($"o2: {b.RefLinqSum()}");
+Console.WriteLine($"o3: {b.RefLinqAgg()}");
 
 // var b = new PWBenchmark2();
 // Console.WriteLine($"o1: {b.ClassicLinqCombined()}");
@@ -26,13 +26,13 @@ using Benchmarks;
 // Console.WriteLine($"o4: {b.ValueLinqCombined()}");
 // Console.WriteLine($"o5: {b.LinqAFCombined()}");
 
-var b = new AppendBench();
-Console.WriteLine($"o1: {b.RefLinqBench()}");
-Console.WriteLine($"o2: {b.LinqBench()}");
-Console.WriteLine($"o3: {b.HyperLinqBench()}");
-Console.WriteLine($"o4: {b.LinqAFBench()}");
-
-
-BenchmarkRunner.Run<AppendBench>();
+// var b = new AppendPrependBenchmark();
+// Console.WriteLine($"o1: {b.RefLinqBench()}");
+// Console.WriteLine($"o2: {b.LinqBench()}");
+// Console.WriteLine($"o3: {b.HyperLinqBench()}");
+// Console.WriteLine($"o4: {b.LinqAFBench()}");
+// 
+// 
+BenchmarkRunner.Run<SelectWhereZipSumBenchmarks>();
 
 // Console.WriteLine(StackAllocBenchmark.Count(() => new PWBenchmark().RefLinqCombined()));

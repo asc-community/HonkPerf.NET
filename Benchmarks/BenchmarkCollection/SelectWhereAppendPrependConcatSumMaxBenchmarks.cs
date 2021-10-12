@@ -19,7 +19,7 @@ using StructLinq;
  */
 
 [MemoryDiagnoser, DisassemblyDiagnoser(maxDepth: 5, exportHtml: true)]
-public class PWBenchmark2
+public class SelectWhereAppendPrependConcatSumMaxBenchmarks
 {
     private readonly int[] arr = new[] {
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,

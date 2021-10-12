@@ -15,7 +15,7 @@ using NetFabric.Hyperlinq;
 */
 
 [MemoryDiagnoser]
-public class AppendBench
+public class AppendPrependBenchmark
 {
     [Benchmark]
     public int RefLinqBench()

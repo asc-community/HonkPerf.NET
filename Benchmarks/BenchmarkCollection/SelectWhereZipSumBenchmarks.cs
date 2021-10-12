@@ -7,15 +7,16 @@ namespace Benchmarks;
 
 /*
 
-|              Method |     Mean |     Error |    StdDev | Code Size |  Gen 0 | Allocated |
-|-------------------- |---------:|----------:|----------:|----------:|-------:|----------:|
-| ClassicLinqCombined | 2.523 us | 0.0486 us | 0.1137 us |   2,830 B | 0.1640 |     520 B |
-|     RefLinqCombined | 2.481 us | 0.0457 us | 0.0406 us |   2,348 B |      - |         - |
+|         Method |     Mean |     Error |    StdDev |   Median | Code Size |  Gen 0 | Allocated |
+|--------------- |---------:|----------:|----------:|---------:|----------:|-------:|----------:|
+| ClassicLinqSum | 2.756 us | 0.0551 us | 0.1607 us | 2.705 us |   3,436 B | 0.1831 |     584 B |
+|     RefLinqSum | 2.017 us | 0.0394 us | 0.0701 us | 2.014 us |   2,714 B |      - |         - |
+|     RefLinqAgg | 2.032 us | 0.0405 us | 0.0827 us | 2.007 us |   2,706 B |      - |         - |
 
  * */
 
 [MemoryDiagnoser, DisassemblyDiagnoser(maxDepth: 5, exportHtml: true)]
-public class RNBenchmark
+public class SelectWhereZipSumBenchmarks
 {
     private readonly int[] arr = new[] {
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,
@@ -34,7 +35,6 @@ public class RNBenchmark
     [Benchmark]
     public double ClassicLinqSum()
     {
-        var res = 0.0;
         var local = GetThing();
         var seq = arr
             .Select(c => c + 5)
