@@ -6,4 +6,9 @@ internal static class ThrowHelpers
     {
         throw new InvalidOperationException("Sequence contains no elements");
     }
+
+    internal static void ThrowSequenceContainsMoreThanOneElement()
+    {
+        throw new InvalidOperationException("Sequence contains more than one element");
+    }
 }
