@@ -35,7 +35,7 @@ public class ZipTest
     {
         var a = new[] { 1, 2, 3 }.ToRefLinq();
         var b = new[] { "aa", "aaa" }.ToRefLinq();
-        Assert.Throws<System.InvalidOperationException>(() => a.Zip(b));
+        Assert.Throws<System.InvalidOperationException>(() => a.Zip(b).Count());
     }
 
     [Fact]
@@ -43,7 +43,7 @@ public class ZipTest
     {
         var a = new[] { 1, 2 }.ToRefLinq();
         var b = new[] { "aa", "aaa", "b" }.ToRefLinq();
-        Assert.Throws<System.InvalidOperationException>(() => a.Zip(b));
+        Assert.Throws<System.InvalidOperationException>(() => a.Zip(b).Count());
     }
 
     [Fact]
