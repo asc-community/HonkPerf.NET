@@ -1,5 +1,7 @@
 # HonkPerf.NET
 
+[![](https://img.shields.io/nuget/vpre/HonkPerf.NET?label=NuGet&logo=nuget)](https://www.nuget.org/packages/HonkPerf.NET/)
+
 Collection of performant (but limited in usage) replacements for BCL's types and methods;
 
 ## RefLinq
