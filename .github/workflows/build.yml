@@ -1,4 +1,4 @@
-name: .build
+name: Build and test
 
 on:
   push:
@@ -27,8 +27,3 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
-      
-    - name: Benchmarks
-      run: |
-          cd Benchmarks
-          dotnet run -c release
