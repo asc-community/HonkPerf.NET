@@ -20,13 +20,14 @@ public struct SelectMany<T, TEnumerator, TEnumeratorOfEnumerators>
 
     public bool MoveNext()
     {
+        begin:
         if (!iterStarted)
         {
             iterStarted = true;
             if (en.MoveNext())
             {
                 currEn = en.Current.enumerator;
-                return MoveNext();
+                goto begin;
             }
             return false;
         }
@@ -36,7 +37,7 @@ public struct SelectMany<T, TEnumerator, TEnumeratorOfEnumerators>
             return true;
         }
         iterStarted = false;
-        return MoveNext();
+        goto begin;
     }
 
     public T Current { get; private set; }
