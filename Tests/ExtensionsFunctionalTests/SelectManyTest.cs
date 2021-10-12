@@ -21,7 +21,7 @@ public class SelectManyTest
         var a =
             new[] { 1, 2, 3, 4, 5 }
             .ToRefLinq()
-            .Select(i => Array.Empty<int>().ToRefLinq())
+            .Select(i => System.Array.Empty<int>().ToRefLinq())
             .SelectMany();
         TestUtils.EqualSequences(a, new int[] { });
     }
@@ -32,7 +32,7 @@ public class SelectManyTest
         var a =
             new[] { 1, 2, 3, 4, 5 }
             .ToRefLinq()
-            .Select(i => (i % 2 == 0 ? Array.Empty<int>() : new[] { i, i * 2, i * 3 }).ToRefLinq())
+            .Select(i => (i % 2 == 0 ? System.Array.Empty<int>() : new[] { i, i * 2, i * 3 }).ToRefLinq())
             .SelectMany();
         TestUtils.EqualSequences(a, new[] { 1, 2, 3, 3, 6, 9, 5, 10, 15 });
     }
