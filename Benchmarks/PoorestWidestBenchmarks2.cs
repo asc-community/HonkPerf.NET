@@ -134,7 +134,6 @@ namespace LinqAF
     {
         public static double LinqAFCombined(int[] arr, int local)
         {
-            var res = 0.0;
             var seq = arr
                 .Select(c => c + 5)
                 .Where(c => c % 2 == 0)

@@ -29,6 +29,8 @@ using Benchmarks;
 var b = new AppendBench();
 Console.WriteLine($"o1: {b.RefLinqBench()}");
 Console.WriteLine($"o2: {b.LinqBench()}");
+Console.WriteLine($"o3: {b.HyperLinqBench()}");
+Console.WriteLine($"o4: {b.LinqAFBench()}");
 
 
 BenchmarkRunner.Run<AppendBench>();
