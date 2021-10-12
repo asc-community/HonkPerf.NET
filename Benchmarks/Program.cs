@@ -1,7 +1,6 @@
 ﻿global using HonkPerf.NET.Core;
 
 using BenchmarkDotNet.Running;
-using Benchmarks;
 
 // 15873.600000000008
 // var b = new PWBenchmark();
@@ -15,9 +14,12 @@ using Benchmarks;
 // Console.WriteLine($"o8: {b.StructLinqCombined()}");
 
 var b = new SelectWhereZipSumBenchmarks();
-Console.WriteLine($"o1: {b.ClassicLinqSum()}");
-Console.WriteLine($"o2: {b.RefLinqSum()}");
-Console.WriteLine($"o3: {b.RefLinqAgg()}");
+Console.WriteLine($"o1: {b.RefLinqSum()}");
+Console.WriteLine($"o2: {b.ClassicLinqSum()}");
+Console.WriteLine($"o3: {b.HyperLinqSum()}");
+Console.WriteLine($"o4: {b.ValueLinqSum()}");
+Console.WriteLine($"o5: {b.LinqAFSum()}");
+
 
 // var b = new PWBenchmark2();
 // Console.WriteLine($"o1: {b.ClassicLinqCombined()}");

@@ -10,7 +10,7 @@ static partial class LazyLinqExtensions
         where TPrevious : IRefEnumerable<T>
         => new(new(prev.enumerator, new(map, capture)));
 
-    public static RefLinqEnumerable<U, Select<T, U, TDelegate, TPrevious>> Select<T, U, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate map)
+    public static RefLinqEnumerable<U, Select<T, U, TDelegate, TPrevious>> Select<T, U, TDelegate, TPrevious>(this RefLinqEnumerable<T, TPrevious> prev, TDelegate map, U typeInferenceHint = default!)
         where TPrevious : IRefEnumerable<T>
         where TDelegate : IValueDelegate<T, U>
         => new(new(prev.enumerator, map));
