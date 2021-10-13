@@ -14,8 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6B43CB8D-A12F-45C3-B604-F4CBE24FEDCB}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		Sources\Directorty.Build.targets = Sources\Directorty.Build.targets
 		Sources\Directory.Build.props = Sources\Directory.Build.props
+		Sources\Directory.Build.targets = Sources\Directory.Build.targets
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection

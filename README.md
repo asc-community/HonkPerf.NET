@@ -1,6 +1,10 @@
 # HonkPerf.NET
 
-[![](https://img.shields.io/nuget/vpre/HonkPerf.NET?label=NuGet&logo=nuget)](https://www.nuget.org/packages/HonkPerf.NET/)
+[![](https://img.shields.io/nuget/vpre/HonkPerf.NET.RefLinq?label=HonkPerf.NET.RefLinq&logo=nuget)](https://www.nuget.org/packages/HonkPerf.NET.RefLinq/)
+
+[![](https://img.shields.io/nuget/vpre/HonkPerf.NET.Core?label=HonkPerf.NET.Core&logo=nuget)](https://www.nuget.org/packages/HonkPerf.NET.Core/)
+
+
 
 Collection of performant (but limited in usage) replacements for BCL's types and methods;
 
