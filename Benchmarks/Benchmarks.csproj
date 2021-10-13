@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HonkPerf.NET\HonkPerf.NET.csproj" />
+    <ProjectReference Include="..\Sources\HonkPerf.NET.RefLinq\HonkPerf.NET.RefLinq.csproj" />
   </ItemGroup>
 
 </Project>

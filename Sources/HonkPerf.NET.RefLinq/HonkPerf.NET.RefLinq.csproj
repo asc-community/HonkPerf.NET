@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HonkPerf.NET.Core" Version="1.0.0" />
     <PackageReference Include="Silk.NET.Maths" Version="2.9.0" />
   </ItemGroup>
 

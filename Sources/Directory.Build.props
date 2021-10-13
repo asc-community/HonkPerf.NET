@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+
+    <Version>1.0.0</Version>
+
+    <Authors>WhiteBlackGoose and contributors</Authors>
+    <Company>Angouri</Company>
+    <Copyright>� Angouri 2021</Copyright>
+
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <RepositoryType>git</RepositoryType>
+    
+    <RepositoryUrl>https://github.com/asc-community/HonkPerf.NET</RepositoryUrl>
+    <PackageTags>performance, allocation, csharp, dotnet</PackageTags>
+  </PropertyGroup>
+</Project>
