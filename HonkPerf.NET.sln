@@ -13,6 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HonkPerf.NET.RefLinq", "Sou
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{6B43CB8D-A12F-45C3-B604-F4CBE24FEDCB}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		Sources\Directory.Build.props = Sources\Directory.Build.props
 		Sources\Directory.Build.targets = Sources\Directory.Build.targets

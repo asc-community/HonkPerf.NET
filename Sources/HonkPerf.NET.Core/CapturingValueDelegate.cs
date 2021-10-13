@@ -1,4 +1,8 @@
-﻿namespace HonkPerf.NET.Core;
+﻿// Copyright (c) Angouri 2021.
+// This file from HonkPerf.NET project is MIT-licensed.
+// Read more: https://github.com/asc-community/HonkPerf.NET
+
+namespace HonkPerf.NET.Core;
 
 public struct CapturingValueDelegate<TIn, TCapture, TOut> : IValueDelegate<TIn, TOut>
 {

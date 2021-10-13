@@ -1,0 +1,5 @@
+[*.cs]
+
+# License header
+file_header_template=Copyright (c) Angouri 2021.\nThis file from HonkPerf.NET project is MIT-licensed.\nRead more: https://github.com/asc-community/HonkPerf.NET
+dotnet_diagnostic.IDE0073.severity = warning
