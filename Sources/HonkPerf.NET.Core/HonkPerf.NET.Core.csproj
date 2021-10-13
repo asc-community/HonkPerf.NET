@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>HonkPerf.NET.Core</PackageId>
+    <Product>HonkPerf.NET.Core</Product>
+    
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <PackageTags>$(PackageTags)</PackageTags>
+  </PropertyGroup>
+</Project>

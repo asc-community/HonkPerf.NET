@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
@@ -12,19 +12,14 @@
 
     <Authors>WhiteBlackGoose and contributors</Authors>
     <Company>Angouri</Company>
-    <Copyright>© Angouri 2021</Copyright>
+    <Copyright>� Angouri 2021</Copyright>
 
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    
     <RepositoryUrl>https://github.com/asc-community/HonkPerf.NET</RepositoryUrl>
-    <PackageTags>linq, performance, allocation</PackageTags>
+    <PackageTags>performance, allocation, csharp, dotnet</PackageTags>
   </PropertyGroup>
-
-
-  <ItemGroup>
-    <PackageReference Include="Silk.NET.Maths" Version="2.9.0" />
-  </ItemGroup>
 </Project>
