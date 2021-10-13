@@ -6,7 +6,7 @@ Collection of performant (but limited in usage) replacements for BCL's types and
 
 ## RefLinq
 
-## Summary
+### Summary
 
 RefLinq is like Linq, but it must be only used within a method, so behaves more limited than `ref` structs. Its benefit - it does not make allocations for enumerators and captured variables (given that you use it properly). Its API does not differ *much* from that of Linq.
 
@@ -36,7 +36,7 @@ return seq.Sum() + seq.Max();
 
 In the example above, no heap allocation happens aside from the one to allocate `arr` in the first line. Though even that may be optimized if you make stack allocation (and use HonkPerf.NET's `FixedReadOnlySpan<T>`), but that's on your side.
 
-## Benchmarks
+### Benchmarks
 
 That's yet another linq library. Why use it? Here's a few benchmarks.
 
@@ -87,7 +87,7 @@ We mark bold the one doing the **least allocations** and italic the *fastest* on
 |     ValueLinqCombined | 5.142 us | 0.1021 us | 0.1967 us |   3,903 B | 0.2823 |     888 B |
 |        LinqAFCombined | 5.938 us | 0.1128 us | 0.1299 us |   5,431 B | 0.0381 |     120 B |
 
-## Conclusion
+#### Conclusion
 
 There's no "best" linq library. RefLinq is great at avoiding allocations, but sometimes there are
 faster alternatives (see benchmarks). It provides good API to avoid allocations on captures:
