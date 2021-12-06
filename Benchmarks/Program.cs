@@ -3,8 +3,13 @@
 // Read more: https://github.com/asc-community/HonkPerf.NET
 
 global using HonkPerf.NET.Core;
-
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using CodegenAnalysis.Benchmarks;
+using HonkPerf.NET.RefLinq;
+using Iced.Intel;
+using System;
+using System.Runtime.CompilerServices;
 
 // 15873.600000000008
 // var b = new SelectWhereBenchmark();
@@ -40,14 +45,6 @@ using BenchmarkDotNet.Running;
 // 
 // 
 
-if (args.Length is 0)
-    BenchmarkRunner.Run<SelectWhereBenchmark>();
-else
-{
-    var type = Type.GetType(args[0]);
-    if (type is null)
-        throw new($"Type {type} not found");
-    BenchmarkRunner.Run(type);
-}
-
-// Console.WriteLine(StackAllocBenchmark.Count(() => new PWBenchmark().RefLinqCombined()));
+CodegenBenchmarkRunner.Run<CodegenBenchmarks>();
+// Console.WriteLine(CodegenBenchmarks.LinqAFManyAppends());
+// Console.WriteLine(CodegenBenchmarks.RefLinqManyAppends());

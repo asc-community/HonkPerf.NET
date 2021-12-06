@@ -4,6 +4,8 @@
 
 using HonkPerf.NET.RefLinq;
 
+
+/*
 unsafe
 {
 
@@ -28,4 +30,4 @@ unsafe
     Console.WriteLine(seq.Max());
     Console.WriteLine(seq.Min());
     Console.WriteLine(seq.Multiply());
-}
+}*/
