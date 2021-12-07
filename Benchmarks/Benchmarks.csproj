@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
     <PackageReference Include="Cistern.ValueLinq" Version="0.1.14" />
-    <PackageReference Include="CodegenAnalysis.Benchmarks" Version="0.0.8-alpha" />
+    <PackageReference Include="CodegenAnalysis.Benchmarks" Version="0.0.9-alpha" />
     <PackageReference Include="LinqAF" Version="3.0.0" />
     <PackageReference Include="LinqFaster" Version="1.0.0" />
     <PackageReference Include="NetFabric.Hyperlinq" Version="3.0.0-beta48" />

@@ -5,6 +5,7 @@
 global using HonkPerf.NET.Core;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using CodegenAnalysis;
 using CodegenAnalysis.Benchmarks;
 using HonkPerf.NET.RefLinq;
 using Iced.Intel;
@@ -31,6 +32,7 @@ using System.Runtime.CompilerServices;
 
 
 // var b = new SelectWhereAppendPrependConcatSumMaxBenchmarks();
+// BenchmarkRunner.Run<SelectWhereAppendPrependConcatSumMaxBenchmarks>();
 // Console.WriteLine($"o1: {b.ClassicLinqCombined()}");
 // Console.WriteLine($"o2: {b.RefLinqCombined()}");
 // Console.WriteLine($"o3: {b.HyperlinqCombined()}");

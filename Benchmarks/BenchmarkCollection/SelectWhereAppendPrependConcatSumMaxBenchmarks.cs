@@ -25,7 +25,7 @@ using StructLinq;
 [MemoryDiagnoser, DisassemblyDiagnoser(maxDepth: 5, exportHtml: true)]
 public class SelectWhereAppendPrependConcatSumMaxBenchmarks
 {
-    private readonly int[] arr = new[] {
+    private static readonly int[] arr = new[] {
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,
         1, 2, 3, 10, 20, 30, 502, 2342, 23, 234, 23, 2235, 32, 324322, 333,
@@ -41,7 +41,7 @@ public class SelectWhereAppendPrependConcatSumMaxBenchmarks
 
 
     [Benchmark]
-    public double RefLinqCombined()
+    public static double RefLinqCombined()
     {
         var seq = arr
             .ToRefLinq()
