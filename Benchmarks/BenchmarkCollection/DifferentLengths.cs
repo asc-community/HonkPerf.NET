@@ -41,16 +41,11 @@ public class DifferentLengths
         arr = System.Linq.Enumerable.Range(1, ArrayLength).ToArray();
     }
 
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    static int GetThing()
-        => 15;
-
-
     [Benchmark]
     public double RefLinqCombined()
     {
         var res = 0.0;
-        var local = GetThing();
+        
         var seq = arr
             .ToRefLinq()
             .Select(c => c + 5)
@@ -65,7 +60,6 @@ public class DifferentLengths
     public double ClassicLinqCombined()
     {
         var res = 0.0;
-        var local = GetThing();
         var seq = arr
             .Select(c => c + 5)
             .Where(c => c % 2 == 0)
