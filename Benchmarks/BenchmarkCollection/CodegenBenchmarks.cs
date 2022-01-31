@@ -12,6 +12,12 @@ using System.Runtime.CompilerServices;
  CAExport(Export.Md)]
 public class CodegenBenchmarks
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    private static double Quack(int a)
+    {
+        return a * a;
+    }
+
     [CAAnalyze]
     public static double RefLinqManyAppends()
     {
@@ -24,13 +30,15 @@ public class CodegenBenchmarks
              .Append(3).Append(3)
              .Append(3).Append(3)
              ;
-        return seq.Sum();
+        var s = seq.Sum();
+        return Quack(s) * Quack(s + 2);
     }
 
     [CAAnalyze]
     public static double LinqAFManyAppends()
     {
-        return LinqAF.RunLinqAFSSa.LinqAFManyAppends();
+        var s = LinqAF.RunLinqAFSSa.LinqAFManyAppends();
+        return Quack(s) * Quack(s + 2);
     }
 
     public static readonly int[] arr = new[] {

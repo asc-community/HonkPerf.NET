@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Sources\HonkPerf.NET.RefLinq\HonkPerf.NET.RefLinq.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CodegenAnalysis.Benchmarks" Version="0.1.0-alpha-1639660460-222ddd2" />
+  </ItemGroup>
+
 </Project>

@@ -41,7 +41,8 @@ public class SelectWhereZipSumBenchmarks
     public double RefLinqSum()
     {
         var local = GetThing();
-        var seq = arr.ToRefLinq()
+        var seq = arr
+            .ToRefLinq()
             .Select(c => c + 5)
             .Where(c => c % 2 == 0)
             .Select((c, local) => c - 6.0 / local, local)

@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Playground",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build debug",
+            "program": "${workspaceFolder}/Playground/bin/Debug/net6.0/Playground.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Playground",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Release Playground",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build release",
+            "program": "${workspaceFolder}/Playground/bin/Release/net6.0/Playground.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Playground",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "Benchmarks",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build benchmarks",
+            "program": "${workspaceFolder}/Benchmarks/bin/Release/net6.0/Benchmarks.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Benchmarks",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        }
+    ]
+}

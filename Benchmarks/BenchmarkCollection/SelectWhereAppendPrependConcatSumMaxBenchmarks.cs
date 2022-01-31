@@ -51,13 +51,14 @@ public class SelectWhereAppendPrependConcatSumMaxBenchmarks
             .Append(3)
             .Append(5)
             .Prepend(3)
-            .Concat(arr.ToRefLinq().Select(c => c / 1d))
+            .Concat(arr
+            .ToRefLinq().Select(c => c / 1d))
             ;
         return seq.Sum() + seq.Max();
     }
 
     [Benchmark]
-    public double ClassicLinqCombined()
+    public static double ClassicLinqCombined()
     {
         var seq = arr
             .Select(c => c + 5)
