@@ -41,12 +41,12 @@ return seq.Sum() + seq.Max();
 In the example above, no heap allocation happens aside from the one to allocate `arr` in the first line. Though even that may be optimized if you make stack allocation (and use HonkPerf.NET's `FixedReadOnlySpan<T>`), but that's on your side.
 ### Similar Libraries
 
-[Hyperlinq](https://github.com/NetFabric/NetFabric.Hyperlinq)
-[LinqFaster](https://github.com/jackmott/LinqFaster)
-[ValueLinq](https://github.com/manofstick/Cistern.ValueLinq)
-[LinqAF](https://github.com/kevin-montrose/LinqAF)
-[NoAlloq](https://github.com/VictorNicollet/NoAlloq)
-[StructLinq](https://github.com/reegeek/StructLinq)
+- [Hyperlinq](https://github.com/NetFabric/NetFabric.Hyperlinq)
+- [LinqFaster](https://github.com/jackmott/LinqFaster)
+- [ValueLinq](https://github.com/manofstick/Cistern.ValueLinq)
+- [LinqAF](https://github.com/kevin-montrose/LinqAF)
+- [NoAlloq](https://github.com/VictorNicollet/NoAlloq)
+- [StructLinq](https://github.com/reegeek/StructLinq)
 
 
 ### Benchmarks
