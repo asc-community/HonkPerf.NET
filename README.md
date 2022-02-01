@@ -39,6 +39,15 @@ return seq.Sum() + seq.Max();
 ```
 
 In the example above, no heap allocation happens aside from the one to allocate `arr` in the first line. Though even that may be optimized if you make stack allocation (and use HonkPerf.NET's `FixedReadOnlySpan<T>`), but that's on your side.
+### Similar Libraries
+
+- [Hyperlinq](https://github.com/NetFabric/NetFabric.Hyperlinq)
+- [LinqFaster](https://github.com/jackmott/LinqFaster)
+- [ValueLinq](https://github.com/manofstick/Cistern.ValueLinq)
+- [LinqAF](https://github.com/kevin-montrose/LinqAF)
+- [NoAlloq](https://github.com/VictorNicollet/NoAlloq)
+- [StructLinq](https://github.com/reegeek/StructLinq)
+
 
 ### Benchmarks
 
@@ -90,6 +99,7 @@ We mark bold the one doing the **least allocations** and italic the *fastest* on
 |     HyperlinqCombined | 7.555 us | 0.1397 us | 0.2410 us |   2,491 B | 0.2975 |     944 B |
 |     ValueLinqCombined | 5.142 us | 0.1021 us | 0.1967 us |   3,903 B | 0.2823 |     888 B |
 |        LinqAFCombined | 5.938 us | 0.1128 us | 0.1299 us |   5,431 B | 0.0381 |     120 B |
+
 
 #### Conclusion
 
