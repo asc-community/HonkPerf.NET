@@ -4,6 +4,21 @@
 
 namespace HonkPerf.NET.Core;
 
+public struct CapturingValueAction<TIn, TCapture> : IValueAction<TIn>
+{
+    private readonly TCapture capture;
+    private readonly Action<TIn, TCapture> deleg;
+
+    public CapturingValueAction(Action<TIn, TCapture> func, TCapture capture)
+    {
+        deleg = func;
+        this.capture = capture;
+    }
+
+    public void Invoke(TIn arg)
+        => deleg(arg, capture);
+}
+
 public struct CapturingValueDelegate<TIn, TCapture, TOut> : IValueDelegate<TIn, TOut>
 {
     private readonly TCapture capture;
@@ -17,6 +32,21 @@ public struct CapturingValueDelegate<TIn, TCapture, TOut> : IValueDelegate<TIn, 
 
     public TOut Invoke(TIn arg)
         => deleg(arg, capture);
+}
+
+public struct CapturingValueAction<TIn1, TIn2, TCapture> : IValueAction<TIn1, TIn2>
+{
+    private readonly TCapture capture;
+    private readonly Action<TIn1, TIn2, TCapture> deleg;
+
+    public CapturingValueAction(Action<TIn1, TIn2, TCapture> func, TCapture capture)
+    {
+        deleg = func;
+        this.capture = capture;
+    }
+
+    public void Invoke(TIn1 arg1, TIn2 arg2)
+        => deleg(arg1, arg2, capture);
 }
 
 public struct CapturingValueDelegate<TIn1, TIn2, TCapture, TOut> : IValueDelegate<TIn1, TIn2, TOut>
@@ -34,6 +64,21 @@ public struct CapturingValueDelegate<TIn1, TIn2, TCapture, TOut> : IValueDelegat
         => deleg(arg1, arg2, capture);
 }
 
+public struct CapturingValueAction<TIn1, TIn2, TIn3, TCapture> : IValueAction<TIn1, TIn2, TIn3>
+{
+    private readonly TCapture capture;
+    private readonly Action<TIn1, TIn2, TIn3, TCapture> deleg;
+
+    public CapturingValueAction(Action<TIn1, TIn2, TIn3, TCapture> func, TCapture capture)
+    {
+        deleg = func;
+        this.capture = capture;
+    }
+
+    public void Invoke(TIn1 arg1, TIn2 arg2, TIn3 arg3)
+        => deleg(arg1, arg2, arg3, capture);
+}
+
 public struct CapturingValueDelegate<TIn1, TIn2, TIn3, TCapture, TOut> : IValueDelegate<TIn1, TIn2, TIn3, TOut>
 {
     private readonly TCapture capture;
@@ -49,6 +94,21 @@ public struct CapturingValueDelegate<TIn1, TIn2, TIn3, TCapture, TOut> : IValueD
         => deleg(arg1, arg2, arg3, capture);
 }
 
+public struct CapturingValueAction<TIn1, TIn2, TIn3, TIn4, TCapture> : IValueAction<TIn1, TIn2, TIn3, TIn4>
+{
+    private readonly TCapture capture;
+    private readonly Action<TIn1, TIn2, TIn3, TIn4, TCapture> deleg;
+
+    public CapturingValueAction(Action<TIn1, TIn2, TIn3, TIn4, TCapture> func, TCapture capture)
+    {
+        deleg = func;
+        this.capture = capture;
+    }
+
+    public void Invoke(TIn1 arg1, TIn2 arg2, TIn3 arg3, TIn4 arg4)
+        => deleg(arg1, arg2, arg3, arg4, capture);
+}
+
 public struct CapturingValueDelegate<TIn1, TIn2, TIn3, TIn4, TCapture, TOut> : IValueDelegate<TIn1, TIn2, TIn3, TIn4, TOut>
 {
     private readonly TCapture capture;
@@ -62,6 +122,21 @@ public struct CapturingValueDelegate<TIn1, TIn2, TIn3, TIn4, TCapture, TOut> : I
 
     public TOut Invoke(TIn1 arg1, TIn2 arg2, TIn3 arg3, TIn4 arg4)
         => deleg(arg1, arg2, arg3, arg4, capture);
+}
+
+public struct CapturingValueAction<TIn1, TIn2, TIn3, TIn4, TIn5, TCapture> : IValueAction<TIn1, TIn2, TIn3, TIn4, TIn5>
+{
+    private readonly TCapture capture;
+    private readonly Action<TIn1, TIn2, TIn3, TIn4, TIn5, TCapture> deleg;
+
+    public CapturingValueAction(Action<TIn1, TIn2, TIn3, TIn4, TIn5, TCapture> func, TCapture capture)
+    {
+        deleg = func;
+        this.capture = capture;
+    }
+
+    public void Invoke(TIn1 arg1, TIn2 arg2, TIn3 arg3, TIn4 arg4, TIn5 arg5)
+        => deleg(arg1, arg2, arg3, arg4, arg5, capture);
 }
 
 public struct CapturingValueDelegate<TIn1, TIn2, TIn3, TIn4, TIn5, TCapture, TOut> : IValueDelegate<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>

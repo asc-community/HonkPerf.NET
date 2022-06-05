@@ -24,12 +24,19 @@ using System.Runtime.InteropServices;
 // Console.WriteLine($"o7: {b.LinqAFCombined()}");
 // Console.WriteLine($"o8: {b.StructLinqCombined()}");
 
-var b = new DifferentLengths();
-b.ArrayLength = 100;
-b.Setup();
-Console.WriteLine($"o1: {b.ClassicLinqCombined()}");
-Console.WriteLine($"o2: {b.RefLinqCombined()}");
+// var b = new DifferentLengths();
+// b.ArrayLength = 100;
+// b.Setup();
+// Console.WriteLine($"o1: {b.ClassicLinqCombined()}");
+// Console.WriteLine($"o2: {b.RefLinqCombined()}");
 // BenchmarkRunner.Run<DifferentLengths>();
+
+var a = new [] { 1, 2, 3, 4 };
+var q = from i in a.ToRefLinq()
+        where i > 2
+        select i * 2;
+foreach (var h in q)
+    Console.WriteLine(h);
 
 // var b = new SelectWhereZipSumBenchmarks();
 // Console.WriteLine($"o1: {b.RefLinqSum()}");
