@@ -44,9 +44,10 @@ In the example above, no heap allocation happens aside from the one to allocate 
 - [Hyperlinq](https://github.com/NetFabric/NetFabric.Hyperlinq)
 - [LinqFaster](https://github.com/jackmott/LinqFaster)
 - [ValueLinq](https://github.com/manofstick/Cistern.ValueLinq)
-- [LinqAF](https://github.com/kevin-montrose/LinqAF)
+- [LinqAF](htjtps://github.com/kevin-montrose/LinqAF)
 - [NoAlloq](https://github.com/VictorNicollet/NoAlloq)
 - [StructLinq](https://github.com/reegeek/StructLinq)
+- [LinqGen](https://github.com/cathei/LinqGen)
 
 
 ### Benchmarks
