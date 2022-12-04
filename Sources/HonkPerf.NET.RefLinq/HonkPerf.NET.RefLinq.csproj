@@ -6,6 +6,7 @@
 
     <PackageReleaseNotes>First release</PackageReleaseNotes>
     <PackageTags>$(PackageTags), linq, performance, allocation</PackageTags>
+    <RepositoryUrl>https://github.com/asc-community/HonkPerf.NET</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
